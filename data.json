@@ -1,0 +1,307 @@
+
+[
+    {
+        "employee_number": "1563",
+        "name": {
+            "last": "Eduardo",
+            "first": "Mason",
+            "middle": "Armin"
+        },
+        "telephone": "61 94493-6660",
+        "address": {
+            "description": "Rua 99, Lote 27",
+            "city": "Brasilia",
+            "state": "DF",
+            "zip": "77319-702"
+        },
+        "position": {
+            "title": "teller",
+            "salary": 68.08,
+            "hours": 35,
+            "date_of_employment": "2019-06-26"
+        },
+        "absences": [
+            {
+                "period": {
+                    "initial_date": "2019-09-21",
+                    "end_date": "2019-10-21"
+                },
+                "type": "vacation"
+            },
+            {
+                "period": {
+                    "initial_date": "2020-02-05",
+                    "end_date": "2020-03-06"
+                },
+                "type": "vacation"
+            }
+        ]
+    },
+    {
+        "employee_number": "1481",
+        "name": {
+            "last": "Paul",
+            "first": "Castillo",
+            "middle": "Griff"
+        },
+        "telephone": "61 95507-8213",
+        "address": {
+            "description": "Rua 51, Lote 65",
+            "city": "Brasilia",
+            "state": "DF",
+            "zip": "74300-253"
+        },
+        "position": {
+            "title": "weaving machine setter",
+            "salary": 51.33,
+            "hours": 40,
+            "date_of_employment": "2016-07-11"
+        },
+        "absences": []
+    },
+    {
+        "employee_number": "3736",
+        "name": {
+            "last": "Bailey",
+            "first": "Sanchez",
+            "middle": "Rolando"
+        },
+        "telephone": "61 93223-5636",
+        "address": {
+            "description": "Rua 49, Lote 46",
+            "city": "Brasilia",
+            "state": "DF",
+            "zip": "74526-199"
+        },
+        "position": {
+            "title": "respiratory therapy technician",
+            "salary": 32.35,
+            "hours": 20,
+            "date_of_employment": "2006-08-26"
+        },
+        "absences": [
+            {
+                "period": {
+                    "initial_date": "2006-11-13",
+                    "end_date": "2006-12-13"
+                },
+                "type": "vacation"
+            }
+        ]
+    },
+    {
+        "employee_number": "1059",
+        "name": {
+            "last": "Arianna",
+            "first": "Freeman",
+            "middle": "Darrell"
+        },
+        "telephone": "61 94237-2855",
+        "address": {
+            "description": "Rua 67, Lote 29",
+            "city": "Brasilia",
+            "state": "DF",
+            "zip": "79332-837"
+        },
+        "position": {
+            "title": "training and development specialist",
+            "salary": 73.54,
+            "hours": 20,
+            "date_of_employment": "2009-02-24"
+        },
+        "absences": [
+            {
+                "period": {
+                    "initial_date": "2016-08-24",
+                    "end_date": "2016-09-23"
+                },
+                "type": "vacation"
+            }
+        ]
+    },
+    {
+        "employee_number": "2785",
+        "name": {
+            "last": "Jeffrey",
+            "first": "Wells",
+            "middle": "Erv"
+        },
+        "telephone": "61 99481-2935",
+        "address": {
+            "description": "Rua 97, Lote 61",
+            "city": "Brasilia",
+            "state": "DF",
+            "zip": "73108-209"
+        },
+        "position": {
+            "title": "instructional coordinator",
+            "salary": 37.55,
+            "hours": 30,
+            "date_of_employment": "2016-08-01"
+        },
+        "absences": [
+            {
+                "period": {
+                    "initial_date": "2017-08-07",
+                    "end_date": "2017-09-06"
+                },
+                "type": "vacation"
+            },
+            {
+                "period": {
+                    "initial_date": "2019-10-09",
+                    "end_date": "2019-11-08"
+                },
+                "type": "vacation"
+            }
+        ]
+    },
+    {
+        "employee_number": "2801",
+        "name": {
+            "last": "Jasmine",
+            "first": "Griffin",
+            "middle": "Bo"
+        },
+        "telephone": "61 98120-6798",
+        "address": {
+            "description": "Rua 29, Lote 99",
+            "city": "Brasilia",
+            "state": "DF",
+            "zip": "71831-382"
+        },
+        "position": {
+            "title": "teller",
+            "salary": 89.86,
+            "hours": 25,
+            "date_of_employment": "2012-04-08"
+        },
+        "absences": []
+    },
+    {
+        "employee_number": "4219",
+        "name": {
+            "last": "Raymond",
+            "first": "Morris",
+            "middle": "Erny"
+        },
+        "telephone": "61 94448-3741",
+        "address": {
+            "description": "Rua 95, Lote 35",
+            "city": "Brasilia",
+            "state": "DF",
+            "zip": "77707-778"
+        },
+        "position": {
+            "title": "transportation equipment painter",
+            "salary": 54.19,
+            "hours": 35,
+            "date_of_employment": "2017-11-02"
+        },
+        "absences": [
+            {
+                "period": {
+                    "initial_date": "2018-11-13",
+                    "end_date": "2018-12-13"
+                },
+                "type": "vacation"
+            },
+            {
+                "period": {
+                    "initial_date": "2020-01-08",
+                    "end_date": "2020-02-07"
+                },
+                "type": "vacation"
+            }
+        ]
+    },
+    {
+        "employee_number": "1134",
+        "name": {
+            "last": "Lydia",
+            "first": "Watson",
+            "middle": "Rustin"
+        },
+        "telephone": "61 96160-4435",
+        "address": {
+            "description": "Rua 46, Lote 50",
+            "city": "Brasilia",
+            "state": "DF",
+            "zip": "72489-374"
+        },
+        "position": {
+            "title": "carpenter",
+            "salary": 64.06,
+            "hours": 35,
+            "date_of_employment": "2009-06-30"
+        },
+        "absences": [
+            {
+                "period": {
+                    "initial_date": "2015-09-02",
+                    "end_date": "2015-10-02"
+                },
+                "type": "vacation"
+            },
+            {
+                "period": {
+                    "initial_date": "2019-07-28",
+                    "end_date": "2019-08-27"
+                },
+                "type": "vacation"
+            }
+        ]
+    },
+    {
+        "employee_number": "0493",
+        "name": {
+            "last": "Adam",
+            "first": "Rogers",
+            "middle": "Bernarr"
+        },
+        "telephone": "61 96838-8235",
+        "address": {
+            "description": "Rua 78, Lote 31",
+            "city": "Brasilia",
+            "state": "DF",
+            "zip": "77350-136"
+        },
+        "position": {
+            "title": "intercity bus driver",
+            "salary": 43.54,
+            "hours": 35,
+            "date_of_employment": "2005-01-06"
+        },
+        "absences": []
+    },
+    {
+        "employee_number": "0148",
+        "name": {
+            "last": "Mikayla",
+            "first": "Hunt",
+            "middle": "Brenden"
+        },
+        "telephone": "61 98915-2134",
+        "address": {
+            "description": "Rua 80, Lote 78",
+            "city": "Brasilia",
+            "state": "DF",
+            "zip": "72427-858"
+        },
+        "position": {
+            "title": "barback",
+            "salary": 32.51,
+            "hours": 35,
+            "date_of_employment": "2015-12-13"
+        },
+        "absences": [
+            {
+                "period": {
+                    "initial_date": "2017-12-03",
+                    "end_date": "2018-01-02"
+                },
+                "type": "vacation"
+            }
+        ]
+    }
+]
