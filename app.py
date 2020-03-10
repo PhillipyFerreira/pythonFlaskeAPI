@@ -105,13 +105,13 @@ def positionemployeeGroup():
         body:
             {[
                 {
-                    "position": STRING
-                    "employees":
+                    "position_title": STRING
+                    "employees_numbers":
                     [
-                        "employee_name1",
-                        "employee_name2",
+                        "employee_number1",
+                        "employee_number2",
                         ...
-                        "employee_nameN",
+                        "employee_numberN",
                     ]
                 },
                 ...
@@ -241,7 +241,7 @@ def getlistAbsencesOnDate():
                     "employeeNumberN",
                 ]
         """
-        return jsonify(response)
+        return jsonify(service.listAbsencesOnDate(request.json)), 200
 
 
 if __name__ == '__main__':

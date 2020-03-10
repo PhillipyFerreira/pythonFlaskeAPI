@@ -1,24 +1,20 @@
 import json
-from collections import defaultdict
 import jmespath
+import itertools
+
+from datetime import datetime
+from operator import itemgetter
+
+
+MAKED_DATE="%Y-%m-%d"
+
 
 global data
+
 with open('data.json', mode='r') as f:
     data = json.load(f)
 
 f.close()
-# for p in data:
-
-#     r = {}
-#     print('Name: ' + p['name']['first'])
-#     print('Position: ' + p['position']['title'])
-#     print('telephone: ' + p['telephone'])
-#     print('')
-#     r.update(p['name'])
-#     # r.update(p['position'])
-#     # r.update(p['telephone'])
-#     response.update(r)
-# print(response)
 
 
 def employeesList():
@@ -54,9 +50,22 @@ def employeePositionById(req):
 
 def groupEmployeeByPosition():
     # Get element of particular key in list of dictionaries
-    query = {'positionList': jmespath.search('[].{ positionTitle: position.title, employee_number: employee_number}', data)}
-    res = defaultdict(list)
-    for v, k in query:
-        res[v].append(k)
-    # [{'type': k, 'items': v} for k, v in res.items()]
+    res = {'positionList': jmespath.search('[].{ position_title: position.title, employee_number: employee_number}', data)}
+    # Temporary list to save groupBy itens
+    grouped = []
+    # For use groupedby the iterable needs to already be sorted on the same key function
+    # Sort employee by `position_title` key --> sorted parameter: dictList, key to sort
+    # Then Grouped by `position_title` in a list --> groupby parameter: dictList, key to groupBy
+    for key, value in itertools.groupby(sorted(res['positionList'], key=itemgetter('position_title')), key=itemgetter('position_title')):
+        tempLst = []
+        for i in value:
+            tempLst.append(i['employee_number'])
+        grouped.append({'position_title': key, 'employees_numbers': tempLst})
+    res = grouped
     return res
+
+
+def listAbsencesOnDate(req):
+    bla = datetime.strptime(req['date'], MAKED_DATE)
+    print(bla)
+    return {}
