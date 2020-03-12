@@ -6,7 +6,7 @@ from datetime import datetime
 from operator import itemgetter
 
 
-MAKED_DATE="%Y-%m-%d"
+MAKED_DATE = "%Y-%m-%d"
 
 
 global data
@@ -66,6 +66,45 @@ def groupEmployeeByPosition():
 
 
 def listAbsencesOnDate(req):
-    bla = datetime.strptime(req['date'], MAKED_DATE)
-    print(bla)
-    return {}
+    # bla = datetime.strptime(req['date'], MAKED_DATE)
+    query = jmespath.search('[].{ employee_number: employee_number, period_absences_date: absences[].' +
+                            '{initial: period.initial_date, end: period.end_date}}', data)
+    res = {}
+    res['employees_numbers'] = []
+    for employee in query:
+        for period in employee['period_absences_date']:
+            if (datetime.strptime(req['date'], MAKED_DATE) >= datetime.strptime(period['initial'], MAKED_DATE) and
+                    datetime.strptime(req['date'], MAKED_DATE) <= datetime.strptime(period['end'], MAKED_DATE)):
+                res['employees_numbers'].append(employee['employee_number'])
+    return res
+
+
+def statusEmployeeOnDate(req):
+    query = jmespath.search('[?employee_number==\'' + req['employee_number'] + '\'].absences | [0] ', data)
+    res = {}
+    for absence in query:
+        print(absence['period'])
+        if (datetime.strptime(req['date'], MAKED_DATE) >= datetime.strptime(absence['period']['initial_date'], MAKED_DATE) and
+                datetime.strptime(req['date'], MAKED_DATE) <= datetime.strptime(absence['period']['end_date'], MAKED_DATE)):
+            res['status'] = absence['type']
+            return res
+
+    if datetime.strptime(req['date'], MAKED_DATE) > datetime.today():
+        res['status'] = 'absence no previst'
+        return res
+
+    res['status'] = 'working'
+    return res
+
+
+def isEmployeeAbsent(req):
+    query = jmespath.search('[?employee_number==\'' + req['employee_number'] + '\'].absences | [0] ', data)
+    res = {}
+    for absence in query:
+        if (datetime.strptime(req['date'], MAKED_DATE) >= datetime.strptime(absence['period']['initial_date'], MAKED_DATE) and
+                datetime.strptime(req['date'], MAKED_DATE) <= datetime.strptime(absence['period']['end_date'], MAKED_DATE)):
+            res['isAbsent'] = True
+            return res
+
+    res['isAbsent'] = False
+    return res

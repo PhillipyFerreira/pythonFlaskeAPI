@@ -44,7 +44,7 @@ def employeesList():
 
 
 # Return if employee is absent
-@app.route("/isemployeeAbsent", methods=['GET'])
+@app.route("/isEmployeeAbsent", methods=['GET'])
 # @app.validate('employee_number', 'date')
 def absent():
     if request.method == 'GET':
@@ -61,11 +61,10 @@ def absent():
         Type: json
         body:
             {
-                "isAbsentToday": true / false
+                "isAbsent": true / false
             }
         """
-        return jsonify(response)
-
+        return jsonify(service.isEmployeeAbsent(request.json))
 
 # Status employee on specific day
 @app.route("/employeeStatusOnDate", methods=['GET'])
@@ -87,7 +86,7 @@ def reasonAbsence():
                 "status": STRING
             }
         """
-        return jsonify(response)
+        return jsonify(service.statusEmployeeOnDate(request.json)), 200
 
 
 # Group employees for Position
