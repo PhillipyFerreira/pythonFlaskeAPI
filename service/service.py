@@ -11,14 +11,13 @@ MAKED_DATE = "%Y-%m-%d"
 
 global data
 
-with open('data.json', mode='r') as f:
+with open('data/employees.json', mode='r') as f:
     data = json.load(f)
 
 f.close()
 
 
 def employeesList():
-    # Using map() + itemgetter()
     # Get list of particular key in list of dictionaries
     res = jmespath.search('[*].name', data)
     return res
@@ -51,7 +50,7 @@ def employeePositionById(req):
 def groupEmployeeByPosition():
     # Get element of particular key in list of dictionaries
     res = {'positionList': jmespath.search('[].{ position_title: position.title, employee_number: employee_number}', data)}
-    # Temporary list to save groupBy itens
+    # Temporary dict to save groupBy itens
     grouped = []
     # For use groupedby the iterable needs to already be sorted on the same key function
     # Sort employee by `position_title` key --> sorted parameter: dictList, key to sort
@@ -66,7 +65,7 @@ def groupEmployeeByPosition():
 
 
 def listAbsencesOnDate(req):
-    # bla = datetime.strptime(req['date'], MAKED_DATE)
+    # Get all employees absences on specific date
     query = jmespath.search('[].{ employee_number: employee_number, period_absences_date: absences[].' +
                             '{initial: period.initial_date, end: period.end_date}}', data)
     res = {}
@@ -80,6 +79,7 @@ def listAbsencesOnDate(req):
 
 
 def statusEmployeeOnDate(req):
+    # Get employee working status on specific date
     query = jmespath.search('[?employee_number==\'' + req['employee_number'] + '\'].absences | [0] ', data)
     res = {}
     for absence in query:
@@ -93,11 +93,12 @@ def statusEmployeeOnDate(req):
         res['status'] = 'absence no previst'
         return res
 
-    res['status'] = 'working'
+    res['status'] = 'worked'
     return res
 
 
 def isEmployeeAbsent(req):
+    # Get if employee is absent
     query = jmespath.search('[?employee_number==\'' + req['employee_number'] + '\'].absences | [0] ', data)
     res = {}
     for absence in query:

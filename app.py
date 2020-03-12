@@ -1,23 +1,16 @@
 from flask import Flask, request, jsonify
-# from flask_jsonschema_validator import JSONSchemaValidator, jsonschema
+
 
 # Local pack
-from . import service
+from service import service
 
-# import jmespath as jpath
 
 app = Flask(__name__)
-response = {}
 
 
 @app.route("/")
 def hello():
     return jsonify({"message": "This path don't have service"})
-
-# Return error when json input body is invalid or incomplete
-# @app.errorhandler(jsonschema.ValidationError)
-# def onValidationError(e):
-#     return Response("There was a validation error: " + str(e), 400)
 
 
 # List employees
@@ -45,8 +38,7 @@ def employeesList():
 
 # Return if employee is absent
 @app.route("/isEmployeeAbsent", methods=['GET'])
-# @app.validate('employee_number', 'date')
-def absent():
+def isAbsent():
     if request.method == 'GET':
         """
         Expected request body
@@ -61,10 +53,11 @@ def absent():
         Type: json
         body:
             {
-                "isAbsent": true / false
+                "isAbsent": BOOL
             }
         """
         return jsonify(service.isEmployeeAbsent(request.json))
+
 
 # Status employee on specific day
 @app.route("/employeeStatusOnDate", methods=['GET'])
@@ -102,7 +95,7 @@ def positionemployeeGroup():
         Expected response body
         Type: json
         body:
-            {[
+            [
                 {
                     "position_title": STRING
                     "employees_numbers":
@@ -114,14 +107,13 @@ def positionemployeeGroup():
                     ]
                 },
                 ...
-            ]}
+            ]
         """
         return jsonify(service.groupEmployeeByPosition()), 200
 
 
 # Get employee name employees by id
 @app.route("/employeeName", methods=['GET'])
-# @app.validate('employee_number')
 def getemployeeName():
     if request.method == 'GET':
         """
@@ -193,6 +185,7 @@ def getemployeeAdress():
         """
         return jsonify(service.employeeAdressById(request.json)), 200
 
+
 # Get employee position by id
 @app.route("/employeePosition", methods=['GET'])
 def getemployeePosition():
@@ -216,6 +209,7 @@ def getemployeePosition():
             }
         """
         return jsonify(service.employeePositionById(request.json)), 200
+
 
 # List employees absences on a date
 @app.route("/listAbsencesOnDate", methods=['GET'])
@@ -244,4 +238,4 @@ def getlistAbsencesOnDate():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=80)
