@@ -19,7 +19,8 @@ f.close()
 
 def employeesList():
     # Get list of particular key in list of dictionaries
-    res = jmespath.search('[*].name', data)
+    
+    res = jmespath.search('[*].{ employee_number: employee_number, name: name}', data)
     return res
 
 
