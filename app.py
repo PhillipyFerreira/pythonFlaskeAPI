@@ -10,8 +10,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    return jsonify({"message": "This path don't have service"})
-
+    return jsonify({"message": "Welcome to BFF service"})
 
 # List employees
 @app.route("/employeesList", methods=['GET'])
