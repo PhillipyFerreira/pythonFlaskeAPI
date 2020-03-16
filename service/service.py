@@ -121,3 +121,19 @@ def listEmpoyeesInRangeSalary(req):
                 float(req['end_salary']) >= employee['salary']):
             res['employees_numbers'].append(employee['employee_number'])
     return res
+
+
+def groupEmployeeByWorkload():
+    # Get element of particular key in list of dictionaries
+    query = {'positionList': jmespath.search('[].{ workload: position.hours, employee_number: employee_number}', data)}
+    # Temporary dict to save groupBy itens
+    res = []
+    # For use groupedby the iterable needs to already be sorted on the same key function
+    # Sort employee by `workload` key --> sorted parameter: dictList, key to sort
+    # Then Grouped by `workload` in a list --> groupby parameter: dictList, key to groupBy
+    for key, value in itertools.groupby(sorted(query['positionList'], key=itemgetter('workload')), key=itemgetter('workload')):
+        tempLst = []
+        for i in value:
+            tempLst.append(i['employee_number'])
+        res.append({'workload': key, 'employees_numbers': tempLst})
+    return res

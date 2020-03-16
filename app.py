@@ -111,6 +111,36 @@ def positionemployeeGroup():
         return jsonify(service.groupEmployeeByPosition()), 200
 
 
+# Group employees for Position
+@app.route("/groupEmployeeByWorkload", methods=['GET'])
+def groupEmployeeByWorkload():
+    if request.method == 'GET':
+        """
+        Expected request body
+        Type: json
+        body:
+            none
+
+        Expected response body
+        Type: json
+        body:
+            [
+                {
+                    "workload": STRING
+                    "employees_numbers":
+                    [
+                        "employee_number1",
+                        "employee_number2",
+                        ...
+                        "employee_numberN",
+                    ]
+                },
+                ...
+            ]
+        """
+        return jsonify(service.groupEmployeeByWorkload()), 200
+
+
 # Get employee name employees by id
 @app.route("/employeeName", methods=['GET'])
 def getemployeeName():
