@@ -236,5 +236,32 @@ def getlistAbsencesOnDate():
         return jsonify(service.listAbsencesOnDate(request.json)), 200
 
 
+# List employees absences on a date
+@app.route("/listEmpoyeesInRangeSalary", methods=['GET'])
+def listEmpoyeesInRangeSalary():
+    if request.method == 'GET':
+        """
+        Expected request body
+        Type: json
+        body:
+            {
+                "initial_salary": NUMBER,
+                "end_salary": NUMBER
+            }
+
+        Expected response body
+        Type: json
+        body:
+            "employees":
+                [
+                    "employeeNumber1",
+                    "employeeNumber2",
+                    ...
+                    "employeeNumberN",
+                ]
+        """
+        return jsonify(service.listEmpoyeesInRangeSalary(request.json)), 200
+
+
 if __name__ == '__main__':
-    app.run(port=80)
+    app.run(port=3000)

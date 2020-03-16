@@ -19,7 +19,6 @@ f.close()
 
 def employeesList():
     # Get list of particular key in list of dictionaries
-    
     res = jmespath.search('[*].{ employee_number: employee_number, name: name}', data)
     return res
 
@@ -109,4 +108,16 @@ def isEmployeeAbsent(req):
             return res
 
     res['isAbsent'] = False
+    return res
+
+
+def listEmpoyeesInRangeSalary(req):
+    # Get employee working status on specific date
+    query = jmespath.search('[].{ employee_number: employee_number, salary: position.salary }', data)
+    res = {}
+    res['employees_numbers'] = []
+    for employee in query:
+        if (float(req['initial_salary']) <= employee['salary'] and
+                float(req['end_salary']) >= employee['salary']):
+            res['employees_numbers'].append(employee['employee_number'])
     return res
