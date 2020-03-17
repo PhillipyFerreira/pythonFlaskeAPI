@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 
-
 # Local pack
 from service import service
 
@@ -32,7 +31,8 @@ def employeesList():
         },
         ...]
     """
-    return jsonify(service.employeesList()), 200
+
+    return jsonify(service.employeesList()), 200, {'Access-Control-Allow-Origin': 'localhost:4200'}
 
 
 # Return if employee is absent
@@ -55,7 +55,7 @@ def isAbsent():
                 "isAbsent": BOOL
             }
         """
-        return jsonify(service.isEmployeeAbsent(request.json))
+        return jsonify(service.isEmployeeAbsent(request.json)), 200, {'Access-Control-Allow-Origin': 'localhost:4200'}
 
 
 # Status employee on specific day
@@ -78,7 +78,7 @@ def reasonAbsence():
                 "status": STRING
             }
         """
-        return jsonify(service.statusEmployeeOnDate(request.json)), 200
+        return jsonify(service.statusEmployeeOnDate(request.json)), 200, {'Access-Control-Allow-Origin': 'localhost:4200'}
 
 
 # Group employees for Position
@@ -108,7 +108,7 @@ def positionemployeeGroup():
                 ...
             ]
         """
-        return jsonify(service.groupEmployeeByPosition()), 200
+        return jsonify(service.groupEmployeeByPosition()), 200, {'Access-Control-Allow-Origin': 'localhost:4200'}
 
 
 # Group employees for Position
@@ -138,7 +138,7 @@ def groupEmployeeByWorkload():
                 ...
             ]
         """
-        return jsonify(service.groupEmployeeByWorkload()), 200
+        return jsonify(service.groupEmployeeByWorkload()), 200, {'Access-Control-Allow-Origin': 'localhost:4200'}
 
 
 # Get employee name employees by id
@@ -163,7 +163,7 @@ def getemployeeName():
                 }
             }
         """
-        return jsonify(service.employeeNameById(request.json)), 200
+        return jsonify(service.employeeNameById(request.json)), 200, {'Access-Control-Allow-Origin': 'localhost:4200'}
 
 
 # Get employee phone by id
@@ -185,7 +185,7 @@ def getemployeePhone():
                 "telephone": STRING,
             }
         """
-        return jsonify(service.employeePhoneById(request.json)), 200
+        return jsonify(service.employeePhoneById(request.json)), 200, {'Access-Control-Allow-Origin': 'localhost:4200'}
 
 
 # Get employee adress by id
@@ -212,7 +212,7 @@ def getemployeeAdress():
                 }
             }
         """
-        return jsonify(service.employeeAdressById(request.json)), 200
+        return jsonify(service.employeeAdressById(request.json)), 200, {'Access-Control-Allow-Origin': 'localhost:4200'}
 
 
 # Get employee position by id
@@ -237,7 +237,7 @@ def getemployeePosition():
                 "date_of_employment": DATE
             }
         """
-        return jsonify(service.employeePositionById(request.json)), 200
+        return jsonify(service.employeePositionById(request.json)), 200, {'Access-Control-Allow-Origin': 'localhost:4200'}
 
 
 # List employees absences on a date
@@ -263,7 +263,7 @@ def getlistAbsencesOnDate():
                     "employeeNumberN",
                 ]
         """
-        return jsonify(service.listAbsencesOnDate(request.json)), 200
+        return jsonify(service.listAbsencesOnDate(request.json)), 200, {'Access-Control-Allow-Origin': 'localhost:4200'}
 
 
 # List employees absences on a date
@@ -290,7 +290,7 @@ def listEmpoyeesInRangeSalary():
                     "employeeNumberN",
                 ]
         """
-        return jsonify(service.listEmpoyeesInRangeSalary(request.json)), 200
+        return jsonify(service.listEmpoyeesInRangeSalary(request.json)), 200, {'Access-Control-Allow-Origin': 'localhost:4200'}
 
 
 if __name__ == '__main__':
