@@ -9,6 +9,7 @@ CORS(app)
 
 
 @app.route("/")
+@cross_origin()
 def hello():
     return jsonify({"message": "Welcome to BFF service"})
 
@@ -39,6 +40,7 @@ def employeesList():
 
 # Return if employee is absent
 @app.route("/isEmployeeAbsent", methods=['GET'])
+@cross_origin()
 def isAbsent():
     if request.method == 'GET':
         """
@@ -57,11 +59,12 @@ def isAbsent():
                 "isAbsent": BOOL
             }
         """
-        return jsonify(service.isEmployeeAbsent(request.json)), 200, {'Access-Control-Allow-Origin': 'http://localhost'}
+        return jsonify(service.isEmployeeAbsent(request.json)), 200
 
 
 # Status employee on specific day
 @app.route("/employeeStatusOnDate", methods=['GET'])
+@cross_origin()
 def reasonAbsence():
     if request.method == 'GET':
         """
@@ -80,11 +83,12 @@ def reasonAbsence():
                 "status": STRING
             }
         """
-        return jsonify(service.statusEmployeeOnDate(request.json)), 200, {'Access-Control-Allow-Origin': 'http://localhost:4200'}
+        return jsonify(service.statusEmployeeOnDate(request.json)), 200
 
 
 # Group employees for Position
 @app.route("/groupEmployeeByPosition", methods=['GET'])
+@cross_origin()
 def positionemployeeGroup():
     if request.method == 'GET':
         """
@@ -110,11 +114,12 @@ def positionemployeeGroup():
                 ...
             ]
         """
-        return jsonify(service.groupEmployeeByPosition()), 200, {'Access-Control-Allow-Origin': 'http://localhost:4200'}
+        return jsonify(service.groupEmployeeByPosition()), 200
 
 
 # Group employees for Position
 @app.route("/groupEmployeeByWorkload", methods=['GET'])
+@cross_origin()
 def groupEmployeeByWorkload():
     if request.method == 'GET':
         """
@@ -140,11 +145,12 @@ def groupEmployeeByWorkload():
                 ...
             ]
         """
-        return jsonify(service.groupEmployeeByWorkload()), 200, {'Access-Control-Allow-Origin': 'http://localhost:4200'}
+        return jsonify(service.groupEmployeeByWorkload()), 200
 
 
 # Get employee name employees by id
 @app.route("/employeeName", methods=['GET'])
+@cross_origin()
 def getemployeeName():
     if request.method == 'GET':
         """
@@ -165,11 +171,12 @@ def getemployeeName():
                 }
             }
         """
-        return jsonify(service.employeeNameById(request.json)), 200, {'Access-Control-Allow-Origin': '*'}
+        return jsonify(service.employeeNameById(request.json)), 200
 
 
 # Get employee phone by id
 @app.route("/employeePhone", methods=['GET'])
+@cross_origin()
 def getemployeePhone():
     if request.method == 'GET':
         """
@@ -187,11 +194,12 @@ def getemployeePhone():
                 "telephone": STRING,
             }
         """
-        return jsonify(service.employeePhoneById(request.json)), 200, {'Access-Control-Allow-Origin': 'http://localhost:4200'}
+        return jsonify(service.employeePhoneById(request.json)), 200
 
 
 # Get employee adress by id
 @app.route("/employeeAdress", methods=['GET'])
+@cross_origin()
 def getemployeeAdress():
     if request.method == 'GET':
         """
@@ -214,11 +222,12 @@ def getemployeeAdress():
                 }
             }
         """
-        return jsonify(service.employeeAdressById(request.json)), 200, {'Access-Control-Allow-Origin': 'http://localhost:4200'}
+        return jsonify(service.employeeAdressById(request.json)), 200
 
 
 # Get employee position by id
 @app.route("/employeePosition", methods=['GET'])
+@cross_origin()
 def getemployeePosition():
     if request.method == 'GET':
         """
@@ -239,11 +248,12 @@ def getemployeePosition():
                 "date_of_employment": DATE
             }
         """
-        return jsonify(service.employeePositionById(request.json)), 200, {'Access-Control-Allow-Origin': 'http://localhost:4200'}
+        return jsonify(service.employeePositionById(request.json)), 200
 
 
 # List employees absences on a date
 @app.route("/listAbsencesOnDate", methods=['GET'])
+@cross_origin()
 def getlistAbsencesOnDate():
     if request.method == 'GET':
         """
@@ -265,11 +275,12 @@ def getlistAbsencesOnDate():
                     "employeeNumberN",
                 ]
         """
-        return jsonify(service.listAbsencesOnDate(request.json)), 200, {'Access-Control-Allow-Origin': 'http://localhost:4200'}
+        return jsonify(service.listAbsencesOnDate(request.json)), 200
 
 
 # List employees absences on a date
 @app.route("/listEmpoyeesInRangeSalary", methods=['GET'])
+@cross_origin()
 def listEmpoyeesInRangeSalary():
     if request.method == 'GET':
         """
@@ -292,7 +303,7 @@ def listEmpoyeesInRangeSalary():
                     "employeeNumberN",
                 ]
         """
-        return jsonify(service.listEmpoyeesInRangeSalary(request.json)), 200, {'Access-Control-Allow-Origin': 'http://localhost:4200'}
+        return jsonify(service.listEmpoyeesInRangeSalary(request.json)), 200
 
 
 if __name__ == '__main__':
