@@ -182,10 +182,7 @@ def getemployeePhone():
         """
         Expected request body
         Type: json
-        body:
-            {
-                "employee_number": STRING,
-            }
+        body: none
 
         Expected response body
         Type: json
