@@ -21,6 +21,7 @@ def employeesList():
     Expected request body
     Type: json
     body: none
+    args: none
 
     Expected response body
     Type: json
@@ -44,13 +45,9 @@ def employeesList():
 def isAbsent():
     if request.method == 'GET':
         """
-        Expected request body
-        Type: json
-        body:
-            {
-                "employee_number": STRING,
-                "date": DATE
-            }
+        Expected args
+            employee_number = NUMBER
+            date = YYYY-MM-DD
 
         Expected response body
         Type: json
@@ -59,7 +56,7 @@ def isAbsent():
                 "isAbsent": BOOL
             }
         """
-        return jsonify(service.isEmployeeAbsent(request.json)), 200
+        return jsonify(service.isEmployeeAbsent(request.args)), 200
 
 
 # Status employee on specific day
@@ -68,13 +65,9 @@ def isAbsent():
 def reasonAbsence():
     if request.method == 'GET':
         """
-        Expected request body
-        Type: json
-        body:
-            {
-                "employee_number": STRING,
-                "date": DATE
-            }
+        Expected args
+            employee_number = NUMBER
+            date = YYYY-MM-DD
 
         Expected response body
         Type: json
@@ -83,7 +76,7 @@ def reasonAbsence():
                 "status": STRING
             }
         """
-        return jsonify(service.statusEmployeeOnDate(request.json)), 200
+        return jsonify(service.statusEmployeeOnDate(request.args)), 200
 
 
 # Group employees for Position
@@ -93,9 +86,8 @@ def positionemployeeGroup():
     if request.method == 'GET':
         """
         Expected request body
-        Type: json
-        body:
-            none
+        body: none
+        args: none
 
         Expected response body
         Type: json
@@ -124,9 +116,8 @@ def groupEmployeeByWorkload():
     if request.method == 'GET':
         """
         Expected request body
-        Type: json
-        body:
-            none
+        body: none
+        args: none
 
         Expected response body
         Type: json
@@ -154,12 +145,9 @@ def groupEmployeeByWorkload():
 def getemployeeName():
     if request.method == 'GET':
         """
-        Expected request body
-        Type: json
-        body:
-            {
-                "employee_number": STRING,
-            }
+        Expected args
+            employee_number = NUMBER
+
         Expected response body
         Type: json
         body:
@@ -171,7 +159,7 @@ def getemployeeName():
                 }
             }
         """
-        return jsonify(service.employeeNameById(request.json)), 200
+        return jsonify(service.employeeNameById(request.args)), 200
 
 
 # Get employee phone by id
@@ -180,9 +168,8 @@ def getemployeeName():
 def getemployeePhone():
     if request.method == 'GET':
         """
-        Expected request body
-        Type: json
-        body: none
+        Expected args
+            employee_number = NUMBER
 
         Expected response body
         Type: json
@@ -191,7 +178,7 @@ def getemployeePhone():
                 "telephone": STRING,
             }
         """
-        return jsonify(service.employeePhoneById(request.json)), 200
+        return jsonify(service.employeePhoneById(request.args)), 200
 
 
 # Get employee adress by id
@@ -200,12 +187,8 @@ def getemployeePhone():
 def getemployeeAdress():
     if request.method == 'GET':
         """
-        Expected request body
-        Type: json
-        body:
-            {
-                "employee_number": STRING,
-            }
+        Expected args
+            employee_number = NUMBER,
 
         Expected response body
         Type: json
@@ -219,7 +202,7 @@ def getemployeeAdress():
                 }
             }
         """
-        return jsonify(service.employeeAdressById(request.json)), 200
+        return jsonify(service.employeeAdressById(request.args)), 200
 
 
 # Get employee position by id
@@ -228,12 +211,8 @@ def getemployeeAdress():
 def getemployeePosition():
     if request.method == 'GET':
         """
-        Expected request body
-        Type: json
-        body:
-            {
-                "employee_number": STRING,
-            }
+        Expected args
+            employee_number = NUMBER
 
         Expected response body
         Type: json
@@ -245,7 +224,7 @@ def getemployeePosition():
                 "date_of_employment": DATE
             }
         """
-        return jsonify(service.employeePositionById(request.json)), 200
+        return jsonify(service.employeePositionById(request.args)), 200
 
 
 # List employees absences on a date
@@ -254,12 +233,8 @@ def getemployeePosition():
 def getlistAbsencesOnDate():
     if request.method == 'GET':
         """
-        Expected request body
-        Type: json
-        body:
-            {
-                "date": DATE,
-            }
+        Expected args
+            date = YYYY-MM-DD
 
         Expected response body
         Type: json
@@ -272,7 +247,7 @@ def getlistAbsencesOnDate():
                     "employeeNumberN",
                 ]
         """
-        return jsonify(service.listAbsencesOnDate(request.json)), 200
+        return jsonify(service.listAbsencesOnDate(request.args)), 200
 
 
 # List employees absences on a date
@@ -281,13 +256,9 @@ def getlistAbsencesOnDate():
 def listEmpoyeesInRangeSalary():
     if request.method == 'GET':
         """
-        Expected request body
-        Type: json
-        body:
-            {
-                "initial_salary": NUMBER,
-                "end_salary": NUMBER
-            }
+        Expected args
+            initial_salary = NUMBER
+            end_salary = NUMBER
 
         Expected response body
         Type: json
@@ -300,8 +271,8 @@ def listEmpoyeesInRangeSalary():
                     "employeeNumberN",
                 ]
         """
-        return jsonify(service.listEmpoyeesInRangeSalary(request.json)), 200
+        return jsonify(service.listEmpoyeesInRangeSalary(request.args)), 200
 
 
 if __name__ == '__main__':
-    app.run(port=80)
+    app.run(port=5000)
