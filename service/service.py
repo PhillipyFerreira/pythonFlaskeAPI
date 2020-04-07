@@ -13,7 +13,7 @@ global data
 
 with open('data/employees.json', mode='r') as f:
     data = json.load(f)
-    data = data[0:1000]
+    # data = data[0:1000] - test performance
 
 f.close()
 
